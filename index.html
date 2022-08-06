@@ -1,22 +1,46 @@
 <html>
+
+  <h2> CAROUSEL</h2>
+
+<img id="pic2" width ="50%">
+
+<p>Show image: <span id="list"> </span> </p>
+
 <ul id="list"></ul>
 
+<img id="pic2" width="50%"><br>
 
+<button id="PREVIOUS">PREVIOUS</button>
+
+<button id="NEXT">NEXT</button>
 
 <script>
-var item, fruits;
+var pictures;
 
 
-fruits = ['apppple', 'mango', 'Melon', 'Orange', 'banana', 'AAAAAAA'];
+pictures = ['https://thumbs.dreamstime.com/b/autumn-flowers-22122594.jpg', 'https://thumbs.dreamstime.com/b/forget-me-not-flowers-white-24721190.jpg', 'http://4.bp.blogspot.com/-s7Pi03dL7io/Ta7iPBU8GPI/AAAAAAAAAfo/rNva-nxiIL0/s400/flower09.jpg', 'https://thumbs.dreamstime.com/b/beautiful-garden-flowers-butterflies-floral-seamless-pattern-blooming-peonies-irises-tulips-black-background-vintage-161866442.jpg', 'https://thumbs.dreamstime.com/b/spring-flowers-4993637.jpg'];
+let element_pic2 = document.getElementById('pic2');
+element_pic2.setAttribute("src", pictures[0]);
 
-fruits.forEach((item) => {
-  let element_list = document.getElementById('list');
-  let new_ul = document.createElement('ul');
-  new_ul.innerText = item;
 
-  element_list.appendChild(new_ul);
+document.getElementById('NEXT').addEventListener('click', (event) => {
+  pictures.push(pictures[0]);
+  pictures.shift();
+  pictures.push(pictures[0]);
+  let element_pic22 = document.getElementById('pic2');
+  element_pic22.setAttribute("src", pictures[0]);
+
 });
 
+document.getElementById('PREVIOUS').addEventListener('click', (event) => {
+  pictures.unshift(pictures.slice(-1)[0]);
+  pictures.pop();
+  pictures.unshift(pictures.slice(-1)[0]);
+  pictures.pop();
+  let element_pic23 = document.getElementById('pic2');
+  element_pic23.setAttribute("src", pictures[0]);
+
+});
 
 </script>
 </html>
